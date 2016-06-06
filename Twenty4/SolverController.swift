@@ -16,11 +16,9 @@ import Foundation
 
 var solution = ""
 
-print("24 Game")
-print("Generating 4 digits...")
-
 func randomDigits() -> [Int] {
-    return [8, 3, 6, 9]
+    return [6, 6, 6, 6]
+    return [13, 3, 9, 7]
     var result = [Int]()
     for _ in 0 ..< 4 {
         result.append(Int(arc4random_uniform(9)+1))
@@ -28,15 +26,53 @@ func randomDigits() -> [Int] {
     return result
 }
 
+// This is the wrong way to do this.
+// Right way is to split the array at each possible split and solve recursively
+
+// ((a+b)+c)+d
+func eval1(nums: [Double], ops: [String]) -> Double {
+    return eval(eval(eval(nums[0], op: ops[0], num2: nums[1]), op: ops[1], num2: nums[2]), op: ops[2], num2: nums[3])
+}
+
+// (a+(b+c))+d
+func eval2(nums: [Double], ops: [String]) -> Double {
+    return eval(eval(nums[0], op: ops[0], num2: eval(nums[1], op: ops[1], num2: nums[2])), op: ops[2], num2: nums[3])
+}
+
+// (a+b)+(c+d)
+func eval3(nums: [Double], ops: [String]) -> Double {
+    return eval(eval(nums[0], op: ops[0], num2: nums[1]), op: ops[1], num2: eval(nums[2], op: ops[2], num2: nums[3]))
+}
+
+// a+((b+c)+d)
+func eval4(nums: [Double], ops: [String]) -> Double {
+    return eval(nums[0], op: ops[0], num2: eval(eval(nums[1], op: ops[1], num2: nums[2]), op: ops[2], num2: nums[3]))
+}
+
+// a+(b+(c+d))
+func eval5(nums: [Double], ops: [String]) -> Double {
+    return eval(nums[0], op: ops[0], num2: eval(nums[1], op: ops[1], num2: eval(nums[2], op: ops[2], num2: nums[3])))
+}
+
+func eval(num1: Double, op: String, num2: Double) -> Double {
+    var value = 0.0
+    switch op {
+    case "+":
+        value = num1 + num2
+    case "-":
+        value = num1 - num2
+    case "*":
+        value = num1 * num2
+    case "/":
+        value = num1 / num2
+    default:
+        print("This message should never happen!")
+    }
+    return value
+}
+
 // Choose 4 digits
 let digits = randomDigits()
-
-print("Make 24 using these digits : ")
-
-for digit in digits {
-    print("\(digit) ")
-}
-print()
 
 // get input from operator
 var input = NSString(data:NSFileHandle.fileHandleWithStandardInput().availableData, encoding:NSUTF8StringEncoding)!
@@ -45,7 +81,7 @@ var enteredDigits = [Double]()
 
 var enteredOperations = [Character]()
 
-let inputString = input as String
+let inputString = "8 + 3 + 8 + 3"
 
 // store input in the appropriate table
 for character in inputString.characters {
@@ -64,13 +100,6 @@ for character in inputString.characters {
 
 // check value of expression provided by the operator
 var value = 0.0
-enteredDigits = []
-for digit in digits {
-    Double(digit)
-    enteredDigits.append(Double(digit))
-}
-Double(4)
-enteredDigits
 
 if enteredDigits.count == 4 && enteredOperations.count == 3 {
     value = enteredDigits[0]
@@ -147,9 +176,13 @@ func isSolvable(inout digits: [Double]) -> Bool {
 
 func permute(inout lst: [Double], inout res: [[Double]], k: Int) -> Void {
     for i in k ..< lst.count {
-        swap(&lst[i], &lst[k])
+        if i != k {
+            swap(&lst[i], &lst[k])
+        }
         permute(&lst, res: &res, k: k + 1)
-        swap(&lst[k], &lst[i])
+        if i != k {
+            swap(&lst[k], &lst[i])
+        }
     }
     if k == lst.count {
         res.append(lst)
@@ -181,14 +214,6 @@ func beautify(infix: String) -> String {
     return solution
 }
 
-if value != 24 {
-    print("The value of the provided expression is \(value) instead of 24!")
-    enteredDigits
-    if isSolvable(&enteredDigits) {
-        print("A possible solution could have been " + solution)
-    } else {
-        print("Anyway, there was no known solution to this one.")
-    }
-} else {
-    print("Congratulations, you found a solution!")
-}
+eval5([8.0, 3.0, 8.0, 3.0], ops: ["/", "-", "/"])
+
+
