@@ -16,16 +16,6 @@ import Foundation
 
 var solution = ""
 
-func randomDigits() -> [Int] {
-    return [6, 6, 6, 6]
-    return [13, 3, 9, 7]
-    var result = [Int]()
-    for _ in 0 ..< 4 {
-        result.append(Int(arc4random_uniform(9)+1))
-    }
-    return result
-}
-
 // This is the wrong way to do this.
 // Right way is to split the array at each possible split and solve recursively
 
@@ -71,76 +61,11 @@ func eval(num1: Double, op: String, num2: Double) -> Double {
     return value
 }
 
-// Choose 4 digits
-let digits = randomDigits()
-
-// get input from operator
-var input = NSString(data:NSFileHandle.fileHandleWithStandardInput().availableData, encoding:NSUTF8StringEncoding)!
-
-var enteredDigits = [Double]()
-
-var enteredOperations = [Character]()
-
-let inputString = "8 + 3 + 8 + 3"
-
-// store input in the appropriate table
-for character in inputString.characters {
-    switch character {
-    case "1", "2", "3", "4", "5", "6", "7", "8", "9":
-        let digit = String(character)
-        enteredDigits.append(Double(Int(digit)!))
-    case "+", "-", "*", "/":
-        enteredOperations.append(character)
-    case "\n":
-        print()
-    default:
-        print("Invalid expression")
-    }
+func evaluate(nums: [Double], ops: [String]) -> Bool{
+    return true
 }
 
-// check value of expression provided by the operator
-var value = 0.0
-
-if enteredDigits.count == 4 && enteredOperations.count == 3 {
-    value = enteredDigits[0]
-    for (i, operation) in enteredOperations.enumerate() {
-        switch operation {
-        case "+":
-            value = value + enteredDigits[i+1]
-        case "-":
-            value = value - enteredDigits[i+1]
-        case "*":
-            value = value * enteredDigits[i+1]
-        case "/":
-            value = value / enteredDigits[i+1]
-        default:
-            print("This message should never happen!")
-        }
-    }
-}
-
-func evaluate(dPerm: [Double], oPerm: [String]) -> Bool {
-    var value = 0.0
-    
-    if dPerm.count == 4 && oPerm.count == 3 {
-        value = dPerm[0]
-        for (i, operation) in oPerm.enumerate() {
-            switch operation {
-            case "+":
-                value = value + dPerm[i+1]
-            case "-":
-                value = value - dPerm[i+1]
-            case "*":
-                value = value * dPerm[i+1]
-            case "/":
-                value = value / dPerm[i+1]
-            default:
-                print("This message should never happen!")
-            }
-        }
-    }
-    return (abs(24 - value) < 0.001)
-}
+//return (abs(24 - value) < 0.001)
 
 func isSolvable(inout digits: [Double]) -> Bool {
     
@@ -157,7 +82,7 @@ func isSolvable(inout digits: [Double]) -> Bool {
         for opr in oPerms {
             var expression = ""
             
-            if evaluate(dig, oPerm: opr) {
+            if evaluate(dig, ops: opr) {
                 for digit in dig {
                     expression += "\(digit)"
                 }
@@ -214,6 +139,6 @@ func beautify(infix: String) -> String {
     return solution
 }
 
-eval5([8.0, 3.0, 8.0, 3.0], ops: ["/", "-", "/"])
+//eval5([8.0, 3.0, 8.0, 3.0], ops: ["/", "-", "/"])
 
 
