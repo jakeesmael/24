@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2126EC2C1D06479B00739134 /* SolverControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2126EC2A1D06479B00739134 /* SolverControllerTests.swift */; };
 		218DB82F1CFEA81000D66CA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DB82E1CFEA81000D66CA8 /* AppDelegate.swift */; };
 		218DB8311CFEA81000D66CA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DB8301CFEA81000D66CA8 /* ViewController.swift */; };
 		218DB8341CFEA81000D66CA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 218DB8321CFEA81000D66CA8 /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		218DB8441CFEA81000D66CA8 /* Twenty4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DB8431CFEA81000D66CA8 /* Twenty4Tests.swift */; };
 		218DB84F1CFEA81000D66CA8 /* Twenty4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DB84E1CFEA81000D66CA8 /* Twenty4UITests.swift */; };
 		218DB85D1CFFC3A100D66CA8 /* SolverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DB85C1CFFC3A100D66CA8 /* SolverController.swift */; };
-		218DB85E1CFFC3A100D66CA8 /* SolverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DB85C1CFFC3A100D66CA8 /* SolverController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2126EC2A1D06479B00739134 /* SolverControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverControllerTests.swift; sourceTree = "<group>"; };
 		218DB82B1CFEA81000D66CA8 /* Twenty4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twenty4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		218DB82E1CFEA81000D66CA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		218DB8301CFEA81000D66CA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 			children = (
 				218DB8431CFEA81000D66CA8 /* Twenty4Tests.swift */,
 				218DB8451CFEA81000D66CA8 /* Info.plist */,
+				2126EC2A1D06479B00739134 /* SolverControllerTests.swift */,
 			);
 			path = Twenty4Tests;
 			sourceTree = "<group>";
@@ -273,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				218DB85E1CFFC3A100D66CA8 /* SolverController.swift in Sources */,
+				2126EC2C1D06479B00739134 /* SolverControllerTests.swift in Sources */,
 				218DB8441CFEA81000D66CA8 /* Twenty4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +495,7 @@
 				218DB8551CFEA81000D66CA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		218DB8561CFEA81000D66CA8 /* Build configuration list for PBXNativeTarget "Twenty4Tests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +504,7 @@
 				218DB8581CFEA81000D66CA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		218DB8591CFEA81000D66CA8 /* Build configuration list for PBXNativeTarget "Twenty4UITests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +513,7 @@
 				218DB85B1CFEA81000D66CA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

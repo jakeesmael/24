@@ -9,6 +9,12 @@
 import XCTest
 @testable import Twenty4
 
+//extension _ArrayType where Generator.Element == Double {
+//    var intArray: [Int] {
+//        return flatMap{ Int($0) }
+//    }
+//}
+
 class SolverControllerTests: XCTestCase {
 
     override func setUp() {
@@ -90,6 +96,18 @@ class SolverControllerTests: XCTestCase {
                  ([10.0, 8.0, 4.0, 3.0], ["+", "-", "+"], 11.0), ([2.0, 11.0, 9.0, 2.0], ["/", "+", "+"], 2.0/22.0)]
         for test in tests {
             XCTAssert(eval5(test.nums, ops: test.ops) == test.ans, "Failed eval1 for: \(test.nums[0])\(test.ops[0])(\(test.nums[1])\(test.ops[1])(\(test.nums[2])\(test.ops[2])\(test.nums[3])))")
+        }
+    }
+    
+    func testIsSolvable() {
+        var tests = [[Double]]()
+        tests = [[3.0, 3.0, 8.0, 8.0], [1.0, 1.0, 1.0, 1.0], [6.0, 6.0, 6.0, 6.0], [9.0, 7.0, 13.0, 3.0], [13.0, 12.0, 11.0, 10.0]]
+        let answers = [true, false, true, true, true]
+        for (test, ans) in zip(tests, answers) {
+            var t = test
+            var solutions = isSolvable(&t)
+            print("Solutions for \(t.intArray): \(solutions)")
+            XCTAssert((solutions.count > 0) == ans, "Failed for \(t.intArray)")
         }
     }
 }
