@@ -17,6 +17,7 @@ class ViewController: UIViewController {
   var currNum: Int = 0
   let cards = ["A":1.0,"J":11.0,"Q":12.0,"K":13.0]
   var nums: [Double] = [0.0, 0.0, 0.0, 0.0]
+  var solutions: [String] = []
     
   @IBOutlet weak var solutionLabel: UILabel!
   @IBOutlet weak var solutionsArea: UILabel!
@@ -49,5 +50,10 @@ class ViewController: UIViewController {
     solutionLabel.text = solutions.count > 0 ? "Solution: Yes" : "Solutions: No"
   }
 
+  @IBAction func showSolutions() {
+    solutions = isSolvable(&nums)
+    let solString = solutions.joinWithSeparator(" ")
+    solutionsArea.text = solString
+  }
 }
 
