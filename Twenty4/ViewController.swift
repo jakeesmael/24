@@ -41,6 +41,7 @@ class ViewController: UIViewController {
     labels[currNum].text = String(Int(val))
     if currNum == 3 {
       solve()
+      solutionsArea.text = ""
     }
     currNum = (currNum+1)%4
   }
