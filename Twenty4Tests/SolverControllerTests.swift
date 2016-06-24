@@ -105,7 +105,7 @@ class SolverControllerTests: XCTestCase {
         let answers = [true, false, true, true, true]
         for (test, ans) in zip(tests, answers) {
             var t = test
-            var solutions = isSolvable(&t)
+            let solutions = isSolvable(&t)
             print("Solutions for \(t.intArray): \(solutions)")
             XCTAssert((solutions.count > 0) == ans, "Failed for \(t.intArray)")
         }

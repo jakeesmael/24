@@ -94,7 +94,6 @@ func beautify(nums: [Double], ops: [String], parenthCase: Int) -> String {
 func isSolvable(inout digits: [Double]) -> [String] {
     
     var solutions = [String]()
-    var result = false
     var dPerms = [[Double]]()
     permute(&digits, res: &dPerms, k: 0)
     
